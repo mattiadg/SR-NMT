@@ -16,14 +16,14 @@ import numpy as np
 class AttSRU(nn.Module):
 
     def __init__(self, input_size, attention_size, output_size, layer_norm, dropout):
-        from .Attention import MLPAttention
+        from .Attention import DotAttention
         super(AttSRU, self).__init__()
         self.linear_in = nn.Linear(input_size, 3*output_size, bias=(not layer_norm))
         self.linear_hidden = nn.Linear(output_size, output_size, bias=(not layer_norm))
         self.linear_ctx = nn.Linear(output_size, output_size, bias=(not layer_norm))
         self.linear_enc = nn.Linear(output_size, output_size, bias=(not layer_norm))
         self.output_size = output_size
-        self.attn = MLPAttention(attention_size, layer_norm=True)
+        self.attn = DotAttention(attention_size, layer_norm=True)
         self.layer_norm = layer_norm
         self.dropout = nn.Dropout(dropout)
         if self.layer_norm:

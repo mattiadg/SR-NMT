@@ -38,36 +38,39 @@ def getAttention(attention_type):
 
 
 class DotAttention(nn.Module):
-    def __init__(self, dim, layer_norm=False, activ='tanh'):
+    def __init__(self, dim, enc_dim=None, layer_norm=False, activ='tanh'):
         super(DotAttention, self).__init__()
-        self.linear_in = nn.Linear(dim, dim, bias=False)
         self.mask = None
-        # layer norm is useless here
-
+        if not enc_dim:
+            enc_dim = dim
+        out_dim = dim
+        self.linear_in = nn.Linear(dim, out_dim, bias=False)
+        self.layer_norm = layer_norm
+        if self.layer_norm:
+            self.ln_in = LayerNorm(dim)
+    
     def applyMask(self, mask):
         self.mask = mask
-
+    
     def initialize_parameters(self, param_init):
         pass
-
+    
     def forward(self, input, context, values):
         """
-        input: batch x dim
+        input: targetL x batch x dim
         context: batch x sourceL x dim
         """
-        targetT = self.linear_in(input)  # batch x dim x 1
-        targetT = targetT.unsqueeze(2)
-        if context.size(0) != targetT.size(0):  #adj for bmm
-            targetT = targetT.transpose(0, 1)
+        batch, sourceL, dim = context.size()
+        targetT = self.ln_in(self.linear_in(input.transpose(0, 1)))  # batch x targetL x dim
+        context = context.transpose(1, 2)  # batch x dim x sourceL
         # Get attention
-
-        attn = torch.bmm(context, targetT).squeeze(2)  # batch x sourceL
+        attn = torch.bmm(targetT, context)  # batch x targetL x sourceL
         if self.mask is not None:
             attn.data.masked_fill_(self.mask, -float('inf'))
-        attn = F.softmax(attn)
-        attn3 = attn.view(attn.size(0), 1, attn.size(1))  # batch x 1 x sourceL
-        weightedContext = torch.bmm(attn3, values).squeeze(1)
-
+        attn = F.softmax(attn.view(-1, sourceL))  # (batch x targetL) x sourceL
+        attn3 = attn.view(batch, -1, sourceL)  # batch x targetL x sourceL
+        weightedContext = torch.bmm(attn3, values).transpose(0, 1)  # targetL x batch x dim
+        
         return weightedContext, attn
 
 
