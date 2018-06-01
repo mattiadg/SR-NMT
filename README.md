@@ -4,7 +4,7 @@ This is an extension of [OpenNMT](https://github.com/OpenNMT/OpenNMT),
 which includes the code for the SR-NMT that has been introduced in 
 [Deep Neural Machine Translation with Weakly-Recurrent Units](https://arxiv.org/abs/1805.04185). 
 
-<center style="padding: 40px"><img width="70%" src="https://github.com/mattiadg/SR-NMT/tree/master/imgs/architecture.png" /></center>
+<center style="padding: 40px"><img width="70%" src="https://github.com/mattiadg/SR-NMT/blob/master/docs/img/architecture.png?raw=true" /></center>
 
 ## Quickstart
 
