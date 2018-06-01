@@ -2,4 +2,4 @@
 
 Documentation under construction for [SR-NMT](https://github.com/mattiadg/SR-NMT)
 
-<center style="padding: 40px"><img width="70%" src="docs/imgs/architecture.png" class="inline"/></center>
+<center style="padding: 40px"><img width="70%" src="https://github.com/mattiadg/SR-NMT/blob/master/docs/img/architecture.png?raw=true" class="inline"/></center>
