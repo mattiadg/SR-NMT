@@ -236,11 +236,6 @@ class SGUDecoder(nn.Module):
                                      opt.word_vec_size,
                                      padding_idx=onmt.Constants.PAD)
 
-        #self.rnn = getRNN(opt.rnn_type)(opt.word_vec_size, opt.rnn_size, num_layers=1,
-        #                  dropout=opt.dropout)
-        self.linear = nn.Linear(opt.word_vec_size, self.hidden_size)
-        self.gate = nn.Linear(self.hidden_size, self.hidden_size)
-
         self.stacked = StackedSGU(opt.layers_dec, opt.rnn_size,
                                   opt.rnn_size, opt.layer_norm,
                                   opt.dropout)
