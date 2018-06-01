@@ -14,7 +14,7 @@ from torch.nn.utils.rnn import pad_packed_sequence as unpack
 
 def getDecoder(decoderType):
     decoders = {'StackedRNN': StackedRNNDecoder,
-                'SGU': SGUDecoder,
+                'SR': SGUDecoder,
                 'ParallelRNN': ParallelRNNDecoder}
 
     if decoderType not in decoders:

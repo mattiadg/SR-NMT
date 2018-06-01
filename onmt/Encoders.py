@@ -13,7 +13,7 @@ from onmt.modules.Units import ParallelMyRNN
 
 def getEncoder(encoder_type):
     encoders = {'RNN': Encoder,
-                'SGU': SGUEncoder}
+                'SR': SGUEncoder}
     if encoder_type not in encoders:
         raise NotImplementedError(encoder_type)
     return encoders[encoder_type]
