@@ -48,3 +48,36 @@ sh translate.sh model_name test_file num_gpu
 sh eval.sh hypothesys target_language /path/to/test/tokenized.tgt
 ```
 This evaluation is consistent with the one used in the paper and was taken from [Tensor2Tensor](https://github.com/tensorflow/tensor2tensor/blob/master/tensor2tensor/utils/get_ende_bleu.sh).
+
+## Citation
+
+If you use this software, please cite:
+
+```
+@inproceedings{digangi2018deep,
+  author    = {Mattia A. Di Gangi and
+               Marcello Federico},
+  title     = {Deep Neural Machine Translation with Weakly-Recurrent Units},
+  booktitle = {Proceedings of the 21st Annual Conference of the European Association for Machine Translation},
+  pages     = {119--128},
+  year      = {2018}
+}
+```
+
+
+[OpenNMT technical report](https://doi.org/10.18653/v1/P17-4012)
+
+```
+@inproceedings{opennmt,
+  author    = {Guillaume Klein and
+               Yoon Kim and
+               Yuntian Deng and
+               Jean Senellart and
+               Alexander M. Rush},
+  title     = {OpenNMT: Open-Source Toolkit for Neural Machine Translation},
+  booktitle = {Proc. ACL},
+  year      = {2017},
+  url       = {https://doi.org/10.18653/v1/P17-4012},
+  doi       = {10.18653/v1/P17-4012}
+}
+```
