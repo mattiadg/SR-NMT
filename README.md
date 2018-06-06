@@ -51,7 +51,8 @@ This evaluation is consistent with the one used in the paper and was taken from 
 
 ## New versions
 We are working to integrate SR-NMT inside:  
-- [OpenNMT-py](https://github.com/mattiadg/OpenNMT-py)  OpenNMT/OpenNMT-py#748
+- [OpenNMT-py](https://github.com/mattiadg/OpenNMT-py)
+([OpenNMT/OpenNMT-py#748](https://github.com/OpenNMT/OpenNMT-py/pull/748))
 
 ## Citation
 
