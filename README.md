@@ -49,14 +49,17 @@ sh eval.sh hypothesys target_language /path/to/test/tokenized.tgt
 ```
 This evaluation is consistent with the one used in the paper and was taken from [Tensor2Tensor](https://github.com/tensorflow/tensor2tensor/blob/master/tensor2tensor/utils/get_ende_bleu.sh).
 
+## New versions
+We are working to integrate SR-NMT inside:  
+- [OpenNMT-py](https://github.com/mattiadg/OpenNMT-py)  OpenNMT/OpenNMT-py#748
+
 ## Citation
 
 If you use this software, please cite:
 
 ```
 @inproceedings{digangi2018deep,
-  author    = {Mattia A. Di Gangi and
-               Marcello Federico},
+  author    = {Di Gangi, Mattia A and Federico, Marcello},
   title     = {Deep Neural Machine Translation with Weakly-Recurrent Units},
   booktitle = {Proceedings of the 21st Annual Conference of the European Association for Machine Translation},
   pages     = {119--128},
